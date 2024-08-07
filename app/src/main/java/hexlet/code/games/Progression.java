@@ -9,7 +9,7 @@ public class Progression {
         System.out.println("What number is missing in the progression?");
         do {
             var numbers = createProgression();
-            var replaceIndex = (int) (Math.random() * 10);
+            var replaceIndex = (int) (Math.random() * numbers.length);
             StringBuilder question = new StringBuilder();
             String correctAnswer = Integer.toString(numbers[replaceIndex]);
             for (var i = 0; i < numbers.length; i++) {
