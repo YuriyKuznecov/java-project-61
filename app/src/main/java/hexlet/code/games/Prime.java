@@ -10,7 +10,7 @@ public class Prime {
         do {
             var number = (int) (Math.random() * 100);
             System.out.println("Question: " + number);
-            System.out.println("Your answer: ");
+            System.out.print("Your answer: ");
             String answer = scan.next();
             String correctAnswer = isSimple(number) ? "yes" : "no";
             Engine.engine(answer, correctAnswer);

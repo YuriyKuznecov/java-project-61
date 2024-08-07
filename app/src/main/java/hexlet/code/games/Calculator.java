@@ -16,7 +16,7 @@ public class Calculator {
             var operator = (int) (Math.random() * 3);
             op = randomOperarator(number1, number2);
             System.out.println("Question: " + number1 + " " + op + " " + number2);
-            System.out.println("Your answer: ");
+            System.out.print("Your answer: ");
             String answer = scan.next();
             Engine.engine(answer, correctAnswer);
         } while (Engine.isCorrect && Engine.count < 3);

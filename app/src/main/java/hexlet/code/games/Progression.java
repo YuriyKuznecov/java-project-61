@@ -20,7 +20,7 @@ public class Progression {
                 }
             }
             System.out.println("Question: " + question);
-            System.out.println("Your answer: ");
+            System.out.print("Your answer: ");
             String answer = scan.next();
             Engine.engine(answer, correctAnswer);
         } while (Engine.isCorrect && Engine.count < 3);
