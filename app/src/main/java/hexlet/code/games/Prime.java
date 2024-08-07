@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Prime {
     public static void prime() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Answer 'yes' if given number is prime.Otherwise answer 'no'.");
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         do {
             var number = (int) (Math.random() * 100);
             System.out.println("Question: " + number);
