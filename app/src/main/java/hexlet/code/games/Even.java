@@ -8,7 +8,7 @@ public class Even {
         Scanner scan = new Scanner(System.in);
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         do {
-            var question = (int) (Math.random() * 100);
+            var question = (int) (Math.random() * Engine.RANDOM_INT);
             System.out.println("Question: " + question);
             System.out.print("Your answer: ");
             String answer = scan.next();
@@ -19,7 +19,7 @@ public class Even {
                 correctAnswer = "no";
             }
             Engine.engine(answer, correctAnswer);
-        } while (Engine.isCorrect && Engine.count < 3);
+        } while (Engine.getIsCorrect() && Engine.getCount() < Engine.MAX_COUNT);
     }
 
 }

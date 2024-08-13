@@ -3,8 +3,18 @@ package hexlet.code;
 import hexlet.code.games.Greeting;
 
 public class Engine {
-    public static int count;
-    public static boolean isCorrect;
+    public static final int RANDOM_INT = 100;
+    public static final int MAX_COUNT = 3;
+    private static int count;
+    private static boolean isCorrect;
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static boolean getIsCorrect() {
+        return isCorrect;
+    }
 
     public static  void engine(String answer, String correctAnswer) {
 
@@ -14,11 +24,11 @@ public class Engine {
             isCorrect = true;
         } else {
             System.out.println("'" + answer + "' is wrong answer :(. Correct answer was '" + correctAnswer + "'.");
-            System.out.println("Let's try again, " + Greeting.userName + "!");
+            System.out.println("Let's try again, " + Greeting.getUserName() + "!");
             isCorrect = false;
         }
-        if (count == 3) {
-            System.out.println("Congratulations, " + Greeting.userName + "!");
+        if (count == MAX_COUNT) {
+            System.out.println("Congratulations, " + Greeting.getUserName() + "!");
         }
     }
 }
