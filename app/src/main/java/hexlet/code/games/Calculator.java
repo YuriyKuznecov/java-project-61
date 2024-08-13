@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 @SuppressWarnings("ALL")
 public class Calculator {
+    private static final int RANDOM_OPERATOR = 3;
     private static String correctAnswer;
+
     public static void calc() {
         Scanner scan = new Scanner(System.in);
         System.out.println("What is the result of the expression?");
@@ -23,9 +25,7 @@ public class Calculator {
     }
 
     static String randomOperarator(int a, int b) {
-        final int randomOperator = 3;
-
-        var op = (int) (Math.random() * randomOperator);
+        var op = (int) (Math.random() * RANDOM_OPERATOR);
         switch (op) {
             case 0 :
                 correctAnswer = Integer.toString(a + b);

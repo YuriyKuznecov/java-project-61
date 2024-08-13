@@ -4,6 +4,11 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Progression {
+    private static final int CONST_LENGTH_1 = 6;
+    private static final int CONST_LENGTH_2 = 5;
+    private static final int CONST_FIRST_ELEMENT = 10;
+    private static final int CONST_STEP = 9;
+
     public static void progression() {
         Scanner scan = new Scanner(System.in);
         System.out.println("What number is missing in the progression?");
@@ -27,15 +32,10 @@ public class Progression {
     }
 
     static int[] createProgression() {
-        final int constLength1 = 6;
-        final int constLength2 = 5;
-        final int constFirstElement = 10;
-        final int constStep = 9;
-
-        var arrayLength = (int) (Math.random() * constLength1) + constLength2;
+        var arrayLength = (int) (Math.random() * CONST_LENGTH_1) + CONST_LENGTH_2;
         int[] numbers = new int[arrayLength];
-        numbers[0] = (int) (Math.random() * constFirstElement);
-        int step = (int) (Math.random() * constStep) + 1;
+        numbers[0] = (int) (Math.random() * CONST_FIRST_ELEMENT);
+        int step = (int) (Math.random() * CONST_STEP) + 1;
         for (var i = 1; i < numbers.length; i++) {
             numbers[i] = numbers[i - 1] + step;
         }
