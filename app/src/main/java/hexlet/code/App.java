@@ -40,7 +40,7 @@ public class App {
                 break;
             case "4" :
                 Greeting.greeting();
-                GCD.gcd();
+                GCD.gcdGame();
                 break;
             case "5" :
                 Greeting.greeting();

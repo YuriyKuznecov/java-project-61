@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class GCD {
-    public static void gcd() {
+    public static void gcdGame() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Find the greatest common divisor of given numbers.");
         do {
@@ -20,6 +20,18 @@ public class GCD {
     }
 
     static int gcd(int a, int b) {
-        return (a % b == 0) ? Math.abs(b) : gcd(b, a % b);
+        int gcd = 1;
+        if (a == 0) {
+            gcd = b;
+        } else if (b == 0) {
+            gcd = a;
+        } else {
+            for (var i = 1; i < Math.min(a, b); i++) {
+                if (a % i == 0 && b % i == 0) {
+                    gcd = i;
+                }
+            }
+        }
+        return gcd;
     }
 }
