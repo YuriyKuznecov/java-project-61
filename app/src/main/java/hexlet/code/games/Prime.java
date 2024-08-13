@@ -14,7 +14,7 @@ public class Prime {
             String answer = scan.next();
             String correctAnswer = isSimple(number) ? "yes" : "no";
             Engine.engine(answer, correctAnswer);
-        } while (Engine.getIsCorrect() && Engine.getCount()< Engine.MAX_COUNT);
+        } while (Engine.getIsCorrect() && Engine.getCount() < Engine.MAX_COUNT);
     }
 
     static boolean isSimple(int num) {
