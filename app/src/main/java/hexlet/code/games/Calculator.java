@@ -23,7 +23,8 @@ public class Calculator {
     }
 
     static String randomOperarator(int a, int b) {
-        int randomOperator = 3;
+        final int randomOperator = 3;
+
         var op = (int) (Math.random() * randomOperator);
         switch (op) {
             case 0 :

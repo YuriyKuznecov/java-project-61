@@ -27,10 +27,11 @@ public class Progression {
     }
 
     static int[] createProgression() {
-        int constLength1 = 6;
-        int constLength2 = 5;
-        int constFirstElement = 10;
-        int constStep = 9;
+        final int constLength1 = 6;
+        final int constLength2 = 5;
+        final int constFirstElement = 10;
+        final int constStep = 9;
+
         var arrayLength = (int) (Math.random() * constLength1) + constLength2;
         int[] numbers = new int[arrayLength];
         numbers[0] = (int) (Math.random() * constFirstElement);
