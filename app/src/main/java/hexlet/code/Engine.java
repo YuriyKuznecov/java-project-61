@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class Engine {
     public static final int RANDOM_INT = 100;
-    public static final int MAX_ATTEMPT = 3;
-    public static String questionMessage;
+    public static final int MAX_ATTEMPT = 3;;
 
-    public static  void engine(String[] question, String[] correctAnswer) {
+    public static  void engine(String questionMessage, String[] question, String[] correctAnswer) {
         Cli.greeting();
         Scanner scan = new Scanner(System.in);
         System.out.println(questionMessage);
@@ -18,8 +17,10 @@ public class Engine {
             if (answer.equals(correctAnswer[i])) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + answer + "' is wrong answer :(. Correct answer was '" + correctAnswer[i] + "'.");
-                System.out.println("Let's try again, " + Cli.getUserName() + "!");
+                System.out.print("""
+                '%s' is wrong answer :(. Correct answer was '%s'.
+                Let's try again, %s!
+                        """.formatted(answer, correctAnswer[i], Cli.getUserName()));
                 return;
             }
         }

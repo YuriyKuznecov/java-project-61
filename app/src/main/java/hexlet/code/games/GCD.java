@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 public class GCD {
     public static void gcdGame() {
-        Engine.questionMessage = "Find the greatest common divisor of given numbers.";
+        String questionMessage = "Find the greatest common divisor of given numbers.";
         String[] question = new String[Engine.MAX_ATTEMPT];
         String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
@@ -13,7 +13,7 @@ public class GCD {
             question[i] = "%d %d".formatted(number1, number2);
             correctAnswer[i] = Integer.toString(gcd(number1, number2));
         }
-        Engine.engine(question, correctAnswer);
+        Engine.engine(questionMessage, question, correctAnswer);
     }
 
     static int gcd(int a, int b) {

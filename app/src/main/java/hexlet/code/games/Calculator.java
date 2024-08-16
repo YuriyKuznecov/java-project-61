@@ -7,11 +7,11 @@ public class Calculator {
     private static final int RANDOM_OPERATOR = 3;
 
     public static void calc() {
-        Engine.questionMessage = "What is the result of the expression?";
+        String questionMessage = "What is the result of the expression?";
         String op;
         String[] question = new String[Engine.MAX_ATTEMPT];
-        String correctAnswer[] = new String[Engine.MAX_ATTEMPT];
-        for (var i =0; i < Engine.MAX_ATTEMPT; i++) {
+        String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
+        for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
             var number1 = (int) (Math.random() * Engine.RANDOM_INT);
             var number2 = (int) (Math.random() * Engine.RANDOM_INT);
             var operator = (int) (Math.random() * RANDOM_OPERATOR);
@@ -31,7 +31,7 @@ public class Calculator {
             }
             question[i] = "" + number1 + " " + op + " " + number2;
         }
-        Engine.engine(question, correctAnswer);
+        Engine.engine(questionMessage, question, correctAnswer);
     }
 
 

@@ -9,7 +9,7 @@ public class Progression {
     private static final int CONST_STEP = 9;
 
     public static void progression() {
-        Engine.questionMessage = "What number is missing in the progression?";
+        String questionMessage = "What number is missing in the progression?";
         String[] question = new String[Engine.MAX_ATTEMPT];
         String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
@@ -26,7 +26,7 @@ public class Progression {
             }
             question[i] = builder.toString();
         }
-        Engine.engine(question, correctAnswer);
+        Engine.engine(questionMessage, question, correctAnswer);
     }
 
     static int[] createProgression() {

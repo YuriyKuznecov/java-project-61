@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 public class Prime {
     public static void prime() {
-        Engine.questionMessage = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String questionMessage = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         String[] question = new String[Engine.MAX_ATTEMPT];
         String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
@@ -12,7 +12,7 @@ public class Prime {
             question[i] = Integer.toString(number);
             correctAnswer[i] = isSimple(number) ? "yes" : "no";
         }
-        Engine.engine(question, correctAnswer);
+        Engine.engine(questionMessage, question, correctAnswer);
     }
 
     static boolean isSimple(int num) {

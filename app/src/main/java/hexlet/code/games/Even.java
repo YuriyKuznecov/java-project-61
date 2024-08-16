@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 
 public class Even {
     public static void event() {
-        Engine.questionMessage = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String questionMessage = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         String[] question = new String[Engine.MAX_ATTEMPT];
         String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
@@ -16,6 +16,6 @@ public class Even {
                 correctAnswer[i] = "no";
             }
         }
-        Engine.engine(question, correctAnswer);
+        Engine.engine(questionMessage, question, correctAnswer);
     }
 }

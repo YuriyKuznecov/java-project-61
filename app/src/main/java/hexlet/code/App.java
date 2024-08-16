@@ -19,7 +19,7 @@ public class App {
         5 - Progression
         6 - Prime
         0 - Exit
-        """);
+            """);
         System.out.print("Your choice: ");
         var number = scanner.next();
         System.out.println();
