@@ -17,18 +17,6 @@ public class GCD {
     }
 
     static int gcd(int a, int b) {
-        int gcd = 1;
-        if (a == 0) {
-            gcd = b;
-        } else if (b == 0) {
-            gcd = a;
-        } else {
-            for (var i = 1; i <= Math.min(a, b); i++) {
-                if (a % i == 0 && b % i == 0) {
-                    gcd = i;
-                }
-            }
-        }
-        return gcd;
+        return b == 0 ? a : gcd(b, a % b);
     }
 }

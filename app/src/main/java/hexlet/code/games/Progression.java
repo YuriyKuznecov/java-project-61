@@ -15,21 +15,25 @@ public class Progression {
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
             var numbers = createProgression();
             var replaceIndex = (int) (Math.random() * numbers.length);
-            StringBuilder builder = new StringBuilder();
             correctAnswer[i] = Integer.toString(numbers[replaceIndex]);
-            for (var j = 0; j < numbers.length; j++) {
-                if (j == replaceIndex) {
-                    builder.append(".. ");
-                } else {
-                    builder.append(numbers[j]).append(" ");
-                }
-            }
-            question[i] = builder.toString();
+            question[i] = getQuestion(numbers, replaceIndex);
         }
         Engine.engine(questionMessage, question, correctAnswer);
     }
 
-    static int[] createProgression() {
+    static String getQuestion(int[] numbers, int index) {
+        StringBuilder result = new StringBuilder();
+        for (var i = 0; i < numbers.length; i++) {
+            if (i == index) {
+                result.append(".. ");
+            } else {
+                result.append(numbers[i]).append(" ");
+            }
+        }
+        return result.toString();
+    }
+
+     static int[] createProgression() {
         var arrayLength = (int) (Math.random() * CONST_LENGTH_1) + CONST_LENGTH_2;
         int[] numbers = new int[arrayLength];
         numbers[0] = (int) (Math.random() * CONST_FIRST_ELEMENT);
