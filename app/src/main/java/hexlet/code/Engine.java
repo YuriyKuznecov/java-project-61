@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Engine {
     public static final int RANDOM_INT = 100;
-    public static final int MAX_ATTEMPT = 3;;
+    public static final int MAX_ATTEMPT = 3;
 
     public static  void engine(String questionMessage, String[] question, String[] correctAnswer) {
         Cli.greeting();
@@ -18,8 +18,8 @@ public class Engine {
                 System.out.println("Correct!");
             } else {
                 System.out.print("""
-                '%s' is wrong answer :(. Correct answer was '%s'.
-                Let's try again, %s!
+                        '%s' is wrong answer :(. Correct answer was '%s'.
+                        Let's try again, %s!
                         """.formatted(answer, correctAnswer[i], Cli.getUserName()));
                 return;
             }
