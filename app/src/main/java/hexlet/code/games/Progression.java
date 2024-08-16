@@ -18,10 +18,10 @@ public class Progression {
             StringBuilder builder = new StringBuilder();
             correctAnswer[i] = Integer.toString(numbers[replaceIndex]);
             for (var j = 0; j < numbers.length; j++) {
-                if (i == replaceIndex) {
+                if (j == replaceIndex) {
                     builder.append(".. ");
                 } else {
-                    builder.append(numbers[i]).append(" ");
+                    builder.append(numbers[j]).append(" ");
                 }
             }
             question[i] = builder.toString();
