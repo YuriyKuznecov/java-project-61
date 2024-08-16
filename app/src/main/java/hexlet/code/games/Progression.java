@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Scanner;
 
 public class Progression {
     private static final int CONST_LENGTH_1 = 6;
@@ -10,25 +9,24 @@ public class Progression {
     private static final int CONST_STEP = 9;
 
     public static void progression() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("What number is missing in the progression?");
-        do {
+        Engine.questionMessage = "What number is missing in the progression?";
+        String[] question = new String[Engine.MAX_ATTEMPT];
+        String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
+        for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
             var numbers = createProgression();
             var replaceIndex = (int) (Math.random() * numbers.length);
-            StringBuilder question = new StringBuilder();
-            String correctAnswer = Integer.toString(numbers[replaceIndex]);
-            for (var i = 0; i < numbers.length; i++) {
+            StringBuilder builder = new StringBuilder();
+            correctAnswer[i] = Integer.toString(numbers[replaceIndex]);
+            for (var j = 0; j < numbers.length; j++) {
                 if (i == replaceIndex) {
-                    question.append(".. ");
+                    builder.append(".. ");
                 } else {
-                    question.append(numbers[i]).append(" ");
+                    builder.append(numbers[i]).append(" ");
                 }
             }
-            System.out.println("Question: " + question);
-            System.out.print("Your answer: ");
-            String answer = scan.next();
-            Engine.engine(answer, correctAnswer);
-        } while (Engine.getIsCorrect() && Engine.getCount() < Engine.MAX_COUNT);
+            question[i] = builder.toString();
+        }
+        Engine.engine(question, correctAnswer);
     }
 
     static int[] createProgression() {

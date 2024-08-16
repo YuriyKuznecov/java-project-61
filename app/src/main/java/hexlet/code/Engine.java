@@ -1,34 +1,28 @@
 package hexlet.code;
 
-import hexlet.code.games.Greeting;
+import java.util.Scanner;
 
 public class Engine {
     public static final int RANDOM_INT = 100;
-    public static final int MAX_COUNT = 3;
-    private static int count;
-    private static boolean isCorrect;
+    public static final int MAX_ATTEMPT = 3;
+    public static String questionMessage;
 
-    public static int getCount() {
-        return count;
-    }
-
-    public static boolean getIsCorrect() {
-        return isCorrect;
-    }
-
-    public static  void engine(String answer, String correctAnswer) {
-
-        if (answer.equals(correctAnswer)) {
-            System.out.println("Correct!");
-            count++;
-            isCorrect = true;
-        } else {
-            System.out.println("'" + answer + "' is wrong answer :(. Correct answer was '" + correctAnswer + "'.");
-            System.out.println("Let's try again, " + Greeting.getUserName() + "!");
-            isCorrect = false;
+    public static  void engine(String[] question, String[] correctAnswer) {
+        Cli.greeting();
+        Scanner scan = new Scanner(System.in);
+        System.out.println(questionMessage);
+        for (var i = 0; i < MAX_ATTEMPT; i++) {
+            System.out.println("Question: " + question[i]);
+            System.out.print("Your answer: ");
+            String answer = scan.next();
+            if (answer.equals(correctAnswer[i])) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + answer + "' is wrong answer :(. Correct answer was '" + correctAnswer[i] + "'.");
+                System.out.println("Let's try again, " + Cli.getUserName() + "!");
+                return;
+            }
         }
-        if (count == MAX_COUNT) {
-            System.out.println("Congratulations, " + Greeting.getUserName() + "!");
-        }
+        System.out.println("Congratulations, " + Cli.getUserName() + "!");
     }
 }
