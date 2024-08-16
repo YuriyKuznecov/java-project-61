@@ -5,18 +5,16 @@ import java.util.Scanner;
 
 public class GCD {
     public static void gcdGame() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Find the greatest common divisor of given numbers.");
-        do {
+        Engine.questionMessage = "Find the greatest common divisor of given numbers.";
+        String[] question = new String[Engine.MAX_ATTEMPT];
+        String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
+        for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
             var number1 = (int) (Math.random() * Engine.RANDOM_INT);
             var number2 = (int) (Math.random() * Engine.RANDOM_INT);
-            var question = "%d %d".formatted(number1, number2);
-            System.out.println("Question: " + question);
-            System.out.print("Your Answer: ");
-            String answer = scan.next();
-            String correctAnswer = Integer.toString(gcd(number1, number2));
-            Engine.engine(answer, correctAnswer);
-        } while (Engine.getIsCorrect() && Engine.getCount() < Engine.MAX_COUNT);
+            question[i] = "%d %d".formatted(number1, number2);
+            correctAnswer[i] = Integer.toString(gcd(number1, number2));
+        }
+        Engine.engine(question, correctAnswer);
     }
 
     static int gcd(int a, int b) {

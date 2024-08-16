@@ -5,16 +5,15 @@ import java.util.Scanner;
 
 public class Prime {
     public static void prime() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        do {
+        Engine.questionMessage = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String[] question = new String[Engine.MAX_ATTEMPT];
+        String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
+        for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
             var number = (int) (Math.random() * Engine.RANDOM_INT);
-            System.out.println("Question: " + number);
-            System.out.print("Your answer: ");
-            String answer = scan.next();
-            String correctAnswer = isSimple(number) ? "yes" : "no";
-            Engine.engine(answer, correctAnswer);
-        } while (Engine.getIsCorrect() && Engine.getCount() < Engine.MAX_COUNT);
+            question[i] = Integer.toString(number);
+            correctAnswer[i] = isSimple(number) ? "yes" : "no";
+        }
+        Engine.engine(question, correctAnswer);
     }
 
     static boolean isSimple(int num) {

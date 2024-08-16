@@ -6,37 +6,33 @@ import java.util.Scanner;
 @SuppressWarnings("ALL")
 public class Calculator {
     private static final int RANDOM_OPERATOR = 3;
-    private static String correctAnswer;
 
     public static void calc() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("What is the result of the expression?");
-        String op = "";
-        do {
+        Engine.questionMessage = "What is the result of the expression?";
+        String op;
+        String[] question = new String[Engine.MAX_ATTEMPT];
+        String correctAnswer[] = new String[Engine.MAX_ATTEMPT];
+        for (var i =0; i < Engine.MAX_ATTEMPT; i++) {
             var number1 = (int) (Math.random() * Engine.RANDOM_INT);
             var number2 = (int) (Math.random() * Engine.RANDOM_INT);
-            op = randomOperarator(number1, number2);
-            System.out.println("Question: " + number1 + " " + op + " " + number2);
-            System.out.print("Your answer: ");
-            String answer = scan.next();
-            Engine.engine(answer, correctAnswer);
-        } while (Engine.getIsCorrect() && Engine.getCount() < Engine.MAX_COUNT);
-        scan.close();
-    }
-
-    static String randomOperarator(int a, int b) {
-        var op = (int) (Math.random() * RANDOM_OPERATOR);
-        switch (op) {
-            case 0 :
-                correctAnswer = Integer.toString(a + b);
-                return "+";
-            case 1 :
-                correctAnswer = Integer.toString(a - b);
-                return "-";
-            default:
-                correctAnswer = Integer.toString(a * b);
-                return "*";
+            var operator = (int) (Math.random() * RANDOM_OPERATOR);
+            switch (operator) {
+                case 0 -> {
+                    op = "+";
+                    correctAnswer[i] = Integer.toString(number1 + number2);
+                }
+                case 1 -> {
+                    op = "-";
+                    correctAnswer[i] = Integer.toString(number1 - number2);
+                }
+                default -> {
+                    op = "*";
+                    correctAnswer[i] = Integer.toString(number1 * number2);
+                }
+            }
+            question[i] = "" + number1 + " " + op + " " + number2;
         }
+        Engine.engine(question, correctAnswer);
     }
 
 
