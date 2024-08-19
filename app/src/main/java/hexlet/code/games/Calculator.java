@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 @SuppressWarnings("ALL")
 public class Calculator {
@@ -12,27 +13,35 @@ public class Calculator {
         String[] question = new String[Engine.MAX_ATTEMPT];
         String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
-            var number1 = (int) (Math.random() * Engine.RANDOM_INT);
-            var number2 = (int) (Math.random() * Engine.RANDOM_INT);
-            var operator = (int) (Math.random() * RANDOM_OPERATOR);
-            switch (operator) {
-                case 0 -> {
-                    op = "+";
-                    correctAnswer[i] = Integer.toString(number1 + number2);
-                }
-                case 1 -> {
-                    op = "-";
-                    correctAnswer[i] = Integer.toString(number1 - number2);
-                }
-                default -> {
-                    op = "*";
-                    correctAnswer[i] = Integer.toString(number1 * number2);
-                }
-            }
-            question[i] = "" + number1 + " " + op + " " + number2;
+            String[] results = calculator();
+            question[i] = results[0];
+            correctAnswer[i] = results[1];
         }
         Engine.engine(questionMessage, question, correctAnswer);
     }
 
+    static String[] calculator() {
+        String[] questionAndAnswer = new String[2];
+        var a = Utils.randomInt(0, Engine.MAX_INT_100);
+        var b = Utils.randomInt(0, Engine.MAX_INT_100);
+        String operators = "+-*";
+        var index = Utils.randomInt(0, operators.length() -1);
+        var operator = operators.charAt(index);
+        switch (operator) {
+            case '+' -> {
+                questionAndAnswer[0] = String.format("%d + %d", a, b);
+                questionAndAnswer[1] = Integer.toString(a + b);
+            }
+            case '-' -> {
+                questionAndAnswer[0] = String.format("%d - %d", a, b);
+                questionAndAnswer[1] = Integer.toString(a - b);
+            }
+            default -> {
+                questionAndAnswer[0] = String.format("%d * %d", a, b);
+                questionAndAnswer[1] = Integer.toString(a * b);
+            }
+        }
+        return questionAndAnswer;
+    }
 
 }

@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Even {
     public static void event() {
@@ -8,14 +9,14 @@ public class Even {
         String[] question = new String[Engine.MAX_ATTEMPT];
         String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
-            var number = (int) (Math.random() * Engine.RANDOM_INT);
+            var number = Utils.randomInt(0, Engine.MAX_INT_100);
             question[i] = Integer.toString(number);
-            if (number % 2 == 0) {
-                correctAnswer[i] = "yes";
-            } else {
-                correctAnswer[i] = "no";
-            }
+            correctAnswer[i] = getCorrectAnswer(number);
         }
         Engine.engine(questionMessage, question, correctAnswer);
+    }
+
+    static String getCorrectAnswer(int a) {
+        return a % 2 == 0 ? "yes" : "no";
     }
 }

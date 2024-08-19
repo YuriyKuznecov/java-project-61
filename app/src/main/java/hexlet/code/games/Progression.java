@@ -1,20 +1,23 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Progression {
-    private static final int CONST_LENGTH_1 = 6;
-    private static final int CONST_LENGTH_2 = 5;
-    private static final int CONST_FIRST_ELEMENT = 10;
-    private static final int CONST_STEP = 9;
+    private static final int MAX_LENGTH = 10;
+    private static final int MIN_LENGTH = 5;;
+    private static final int MAX_INT_10 = 10;
 
     public static void progression() {
         String questionMessage = "What number is missing in the progression?";
         String[] question = new String[Engine.MAX_ATTEMPT];
         String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
-            var numbers = createProgression();
-            var replaceIndex = (int) (Math.random() * numbers.length);
+            var arrayLength = Utils.randomInt(MIN_LENGTH, MAX_LENGTH);
+            var firstElement = Utils.randomInt(0, MAX_INT_10);
+            var step = Utils.randomInt(0, MAX_INT_10);
+            var numbers = createProgression(arrayLength, firstElement, step);
+            var replaceIndex = Utils.randomInt(0, numbers.length - 1);
             correctAnswer[i] = Integer.toString(numbers[replaceIndex]);
             question[i] = getQuestion(numbers, replaceIndex);
         }
@@ -33,11 +36,9 @@ public class Progression {
         return result.toString();
     }
 
-     static int[] createProgression() {
-        var arrayLength = (int) (Math.random() * CONST_LENGTH_1) + CONST_LENGTH_2;
-        int[] numbers = new int[arrayLength];
-        numbers[0] = (int) (Math.random() * CONST_FIRST_ELEMENT);
-        int step = (int) (Math.random() * CONST_STEP) + 1;
+     static int[] createProgression(int length, int first, int step) {
+        int[] numbers = new int[length];
+        numbers[0] = first;
         for (var i = 1; i < numbers.length; i++) {
             numbers[i] = numbers[i - 1] + step;
         }

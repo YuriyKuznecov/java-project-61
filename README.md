@@ -3,3 +3,28 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/ff05241b4521a91946fe/maintainability)](https://codeclimate.com/github/YuriyKuznecov/java-project-61/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ff05241b4521a91946fe/test_coverage)](https://codeclimate.com/github/YuriyKuznecov/java-project-61/test_coverage)
 [asciinema](https://asciinema.org/a/6p4QQwiIoYQj0TVJXBwWwJgyr)
+
+## Start
+
+```bash
+make
+```
+
+## Setup
+
+```bash
+make build
+```
+
+## Run
+
+```bash
+make run
+```
+
+## Run checkstyle
+
+```bash
+make lint
+```
+
