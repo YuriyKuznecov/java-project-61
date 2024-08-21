@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 
 public class Progression {
     private static final int MAX_LENGTH = 10;
-    private static final int MIN_LENGTH = 5;;
+    private static final int MIN_LENGTH = 5;
     private static final int MAX_INT_10 = 10;
 
     public static void progression() {
@@ -36,7 +36,7 @@ public class Progression {
         return result.toString();
     }
 
-     static int[] createProgression(int length, int first, int step) {
+    static int[] createProgression(int length, int first, int step) {
         int[] numbers = new int[length];
         numbers[0] = first;
         for (var i = 1; i < numbers.length; i++) {

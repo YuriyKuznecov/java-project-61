@@ -9,7 +9,7 @@ public class Engine {
     public static  void engine(String questionMessage, String[] question, String[] correctAnswer) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name?");
+        System.out.print("May I have your name? ");
         var userName = scan.next();
         System.out.println("Hello, " + userName + "!");
         System.out.println(questionMessage);
@@ -20,10 +20,10 @@ public class Engine {
             if (answer.equals(correctAnswer[i])) {
                 System.out.println("Correct!");
             } else {
-                System.out.print("""
-                        '%s' is wrong answer :(. Correct answer was '%s'.
-                        Let's try again, %s!
-                        """.formatted(answer, correctAnswer[i], userName));
+                System.out.printf("""
+                '%s' is wrong answer :(. Correct answer was '%s'.
+                Let's try again, %s!
+                   \s""", answer, correctAnswer[i], userName);
                 return;
             }
         }

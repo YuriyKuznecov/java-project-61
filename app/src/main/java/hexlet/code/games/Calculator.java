@@ -25,7 +25,7 @@ public class Calculator {
         var a = Utils.randomInt(0, Engine.MAX_INT_100);
         var b = Utils.randomInt(0, Engine.MAX_INT_100);
         String operators = "+-*";
-        var index = Utils.randomInt(0, operators.length() -1);
+        var index = Utils.randomInt(0, operators.length() - 1);
         var operator = operators.charAt(index);
         switch (operator) {
             case '+' -> {
