@@ -6,17 +6,16 @@ import hexlet.code.Utils;
 public class Prime {
     public static void prime() {
         String questionMessage = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        String[] question = new String[Engine.MAX_ATTEMPT];
-        String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
+        String[][] questionAndAnswer = new String[Engine.MAX_ATTEMPT][2];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
             var number = Utils.randomInt(0, Engine.MAX_INT_100);
-            question[i] = Integer.toString(number);
-            correctAnswer[i] = isSimple(number) ? "yes" : "no";
+            questionAndAnswer[i][0] = Integer.toString(number);
+            questionAndAnswer[i][1] = isSimple(number) ? "yes" : "no";
         }
-        Engine.engine(questionMessage, question, correctAnswer);
+        Engine.engine(questionMessage, questionAndAnswer);
     }
 
-    static boolean isSimple(int num) {
+    private static boolean isSimple(int num) {
         if (num < 2) {
             return false;
         }

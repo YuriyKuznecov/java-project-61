@@ -9,39 +9,31 @@ public class Calculator {
 
     public static void calc() {
         String questionMessage = "What is the result of the expression?";
-        String op;
-        String[] question = new String[Engine.MAX_ATTEMPT];
-        String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
+        String[][] questionAndAnswer = new String[Engine.MAX_ATTEMPT][2];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
-            String[] results = calculator();
-            question[i] = results[0];
-            correctAnswer[i] = results[1];
+            var a = Utils.randomInt(0, Engine.MAX_INT_100);
+            var b = Utils.randomInt(0, Engine.MAX_INT_100);
+            String[] operators = {"+", "-", "*"};
+            var randomIndex = Utils.randomInt(0, operators.length - 1);
+            String operator = operators[randomIndex];
+            questionAndAnswer[i][0] = String.format("%d %s %d", a, operator, b);
+            questionAndAnswer[i][1] = Integer.toString(calculator(a, b, operator));
         }
-        Engine.engine(questionMessage, question, correctAnswer);
+        Engine.engine(questionMessage, questionAndAnswer);
     }
 
-    static String[] calculator() {
-        String[] questionAndAnswer = new String[2];
-        var a = Utils.randomInt(0, Engine.MAX_INT_100);
-        var b = Utils.randomInt(0, Engine.MAX_INT_100);
-        String operators = "+-*";
-        var index = Utils.randomInt(0, operators.length() - 1);
-        var operator = operators.charAt(index);
+    private static int calculator(int a, int b, String operator) {
         switch (operator) {
-            case '+' -> {
-                questionAndAnswer[0] = String.format("%d + %d", a, b);
-                questionAndAnswer[1] = Integer.toString(a + b);
+            case "+" -> {
+                return a + b;
             }
-            case '-' -> {
-                questionAndAnswer[0] = String.format("%d - %d", a, b);
-                questionAndAnswer[1] = Integer.toString(a - b);
+            case "-" -> {
+                return a - b;
             }
             default -> {
-                questionAndAnswer[0] = String.format("%d * %d", a, b);
-                questionAndAnswer[1] = Integer.toString(a * b);
+                return a * b;
             }
         }
-        return questionAndAnswer;
     }
 
 }

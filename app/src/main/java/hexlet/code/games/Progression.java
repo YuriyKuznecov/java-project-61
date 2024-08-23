@@ -10,21 +10,20 @@ public class Progression {
 
     public static void progression() {
         String questionMessage = "What number is missing in the progression?";
-        String[] question = new String[Engine.MAX_ATTEMPT];
-        String[] correctAnswer = new String[Engine.MAX_ATTEMPT];
+        String[][] questionAndAnswer = new String[Engine.MAX_ATTEMPT][2];
         for (var i = 0; i < Engine.MAX_ATTEMPT; i++) {
             var arrayLength = Utils.randomInt(MIN_LENGTH, MAX_LENGTH);
             var firstElement = Utils.randomInt(0, MAX_INT_10);
             var step = Utils.randomInt(0, MAX_INT_10);
             var numbers = createProgression(arrayLength, firstElement, step);
             var replaceIndex = Utils.randomInt(0, numbers.length - 1);
-            correctAnswer[i] = Integer.toString(numbers[replaceIndex]);
-            question[i] = getQuestion(numbers, replaceIndex);
+            questionAndAnswer[i][0] = getQuestion(numbers, replaceIndex);
+            questionAndAnswer[i][1] = Integer.toString(numbers[replaceIndex]);
         }
-        Engine.engine(questionMessage, question, correctAnswer);
+        Engine.engine(questionMessage, questionAndAnswer);
     }
 
-    static String getQuestion(int[] numbers, int index) {
+    private static String getQuestion(int[] numbers, int index) {
         StringBuilder result = new StringBuilder();
         for (var i = 0; i < numbers.length; i++) {
             if (i == index) {
@@ -36,11 +35,10 @@ public class Progression {
         return result.toString();
     }
 
-    static int[] createProgression(int length, int first, int step) {
+    private static int[] createProgression(int length, int first, int step) {
         int[] numbers = new int[length];
-        numbers[0] = first;
         for (var i = 1; i < numbers.length; i++) {
-            numbers[i] = numbers[i - 1] + step;
+            numbers[i] = first + i * step;
         }
         return numbers;
     }
