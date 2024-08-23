@@ -37,7 +37,7 @@ public class Progression {
 
     private static int[] createProgression(int length, int first, int step) {
         int[] numbers = new int[length];
-        for (var i = 1; i < numbers.length; i++) {
+        for (var i = 0; i < numbers.length; i++) {
             numbers[i] = first + i * step;
         }
         return numbers;
