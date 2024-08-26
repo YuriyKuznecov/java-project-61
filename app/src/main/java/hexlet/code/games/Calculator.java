@@ -30,8 +30,11 @@ public class Calculator {
             case "-" -> {
                 return a - b;
             }
-            default -> {
+            case "*" -> {
                 return a * b;
+            }
+            default -> {
+                return 0;
             }
         }
     }
